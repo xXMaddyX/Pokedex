@@ -1,4 +1,5 @@
 import { createNameNumImg, createTypeContainer, createInfoButton } from "./constructCards.js";
+import { initRefs, initSearchBar } from "./searchBar.js";
 //--------------------------->>>>GLOBALS<<<<------------------------------
 let Page = 0;
 let Offset = 20;
@@ -15,7 +16,7 @@ async function initFetch(offset) {
     await fetchData(offset);
     await bufferData();
     sortBuffer();
-    renderCards();
+    renderCards(SORTED_BUFFER);
 };
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const fetchData = async (offset) => {
@@ -42,8 +43,8 @@ const sortBuffer = () => {
 };
 //------------------------------------------------------------------------
 //------------------------>>>>RENDER_CARDS<<<<----------------------------
-const renderCards = () => {
-    SORTED_BUFFER.forEach((element) => {
+const renderCards = (inpBuffer) => {
+    inpBuffer.forEach((element) => {
         createCards(element.pokeData);
     });
 };
@@ -69,7 +70,7 @@ const scrollTop = () => {
     });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     prevButton.forEach((button) => {
         button.addEventListener("click", () => {
             if (Page > 0) {
@@ -88,5 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     Page = 0;
-    initFetch(Page * Offset);
+    initRefs(createCards, renderCards, initFetch);
+    await initFetch(Page * Offset);
+    await initSearchBar();
 });
