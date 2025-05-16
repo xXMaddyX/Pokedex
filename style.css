@@ -63,6 +63,9 @@ body {
 
 .poke-img {
     width: 200px;
+    max-height: 180px;
+    min-height: 180px;
+    padding: 10px;
     filter: drop-shadow(2px 2px 5px black);
 }
 
