@@ -11,13 +11,16 @@ let FUNC_REFS = {
     renderCards: null,
     initFetch: null,
     Offset: null,
+    Page: null
 }
 //--------------------------------------------------------------------------------->
 //------------------------------->>>>INIT_REFS<<<<--------------------------------->
-const initRefs = (createCards, renderCards, initFetch) => {
+const initRefs = (createCards, renderCards, initFetch, offset, page) => {
     FUNC_REFS.createCards = createCards;
     FUNC_REFS.renderCards = renderCards;
     FUNC_REFS.initFetch = initFetch;
+    FUNC_REFS.Offset = offset;
+    FUNC_REFS.Page = page;
 };
 //--------------------------------------------------------------------------------->
 //-------------------------->>>>INIT_SEARCH_FUNCTION<<<<--------------------------->
@@ -34,7 +37,7 @@ inputRef.addEventListener("input", (e) => {
         filterBufferForMatches(e)
     } else if (inp.length <= 0) {
         searchBarStates.isSearchReady = false;
-        FUNC_REFS.initFetch(0);
+        FUNC_REFS.initFetch(FUNC_REFS.Page * FUNC_REFS.Offset);
     }
 });
 //-------------------------->>>>FILTER_BUFFER<<<<---------------------------------->
@@ -74,7 +77,12 @@ const bufferDataSearch = async () => {
 };
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //-------------------------------------------------------------------------------->
+const updateFUNCRefs = (page) => {
+    FUNC_REFS.Page = page;
+};
 export {
     initSearchBar,
     initRefs,
+    FUNC_REFS,
+    updateFUNCRefs
 }

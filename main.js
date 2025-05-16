@@ -1,5 +1,5 @@
 import { createNameNumImg, createTypeContainer, createInfoButton } from "./constructCards.js";
-import { initRefs, initSearchBar } from "./searchBar.js";
+import { initRefs, initSearchBar, updateFUNCRefs } from "./searchBar.js";
 //--------------------------->>>>GLOBALS<<<<------------------------------
 let Page = 0;
 let Offset = 20;
@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             };
             initFetch(Page * Offset);
             scrollTop();
+            updateFUNCRefs(Page);
         }); 
     });
     nextButton.forEach((button) => {
@@ -85,11 +86,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             Page += 1;
             initFetch(Page * Offset);
             scrollTop();
+            updateFUNCRefs(Page);
         });
     })
 
     Page = 0;
-    initRefs(createCards, renderCards, initFetch);
+    initRefs(createCards, renderCards, initFetch, Offset, Page);
     await initFetch(Page * Offset);
     await initSearchBar();
 });
