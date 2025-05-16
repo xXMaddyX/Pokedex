@@ -9,8 +9,7 @@ const createNameNumImg = (rawPokemonData) => {
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     const pokeMonImage = document.createElement("img");
     pokeMonImage.classList.add("poke-img")
-    console.log(rawPokemonData)
-    pokeMonImage.src = rawPokemonData.sprites.other.dream_world.front_default;
+    pokeMonImage.src = rawPokemonData.sprites.front_default;
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     return {pokemonName, pokeNr, pokeMonImage};
 };
