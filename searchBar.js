@@ -27,7 +27,6 @@ const initRefs = (createCards, renderCards, initFetch, offset, page) => {
 const initSearchBar = async () => {
     await loadCompleteDBForSearch();
     await bufferDataSearch();
-    console.log(searchBarStates.rawBuffer)
 }
 //--------------------------------------------------------------------------------->
 //----------------------------->>>>INPUT_LISTENER<<<<------------------------------>
@@ -40,6 +39,7 @@ inputRef.addEventListener("input", (e) => {
         FUNC_REFS.initFetch(FUNC_REFS.Page * FUNC_REFS.Offset);
     }
 });
+//--------------------------------------------------------------------------------->
 //-------------------------->>>>FILTER_BUFFER<<<<---------------------------------->
 const filterBufferForMatches = (e) => {
     searchBarStates.rawBuffer.forEach((elem) => {

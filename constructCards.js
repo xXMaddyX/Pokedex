@@ -44,7 +44,7 @@ const createTypeContainer = (rawPokemonData) => {
 };
 //----------------------------------------------------------------------
 //-------------------->>>>CREATE_DETAIL_BUTTON<<<<----------------------
-const createInfoButton = () => {
+const createInfoButton = (rawPokemonData) => {
     //!!!!!!!!!!!!!!!!!!!!!!<<<<NEED_TO_IMPLEMENT>>>>-------------------
     /**@type {HTMLElement} */
     const infoButton = document.createElement("button");
@@ -53,7 +53,8 @@ const createInfoButton = () => {
     infoButton.style.marginTop = "10px"
 
     infoButton.addEventListener("click", () => {
-        infoButton.textContent = "Clicked!!!"
+        //ADD_CARD_MODAL!!!!!!!!!!!!!!!!
+        console.log(rawPokemonData) 
     });
 
     return infoButton;

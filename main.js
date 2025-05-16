@@ -39,7 +39,6 @@ const sortBuffer = () => {
     BUFFER.forEach((element) => {
         SORTED_BUFFER[element.pokeData.id -1] = element
     });
-    console.log(SORTED_BUFFER)
 };
 //------------------------------------------------------------------------
 //------------------------>>>>RENDER_CARDS<<<<----------------------------
