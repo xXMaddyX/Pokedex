@@ -69,7 +69,7 @@ const scrollTop = () => {
     });
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
     prevButton.forEach((button) => {
         button.addEventListener("click", () => {
             if (Page > 0) {
@@ -91,6 +91,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     Page = 0;
     initRefs(createCards, renderCards, initFetch, Offset, Page);
+    initCallsAsync(Offset, Page);
+});
+
+async function initCallsAsync(Page, Offset) {
     await initFetch(Page * Offset);
     await initSearchBar();
-});
+}
